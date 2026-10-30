@@ -1,25 +1,25 @@
 :root {
-  /* Tonos ajustados para permitir sombras Neumórficas (ni muy oscuro ni muy claro) */
   --bg: #1a1f2e; 
   --text: #f1f5f9;
   --accent: rgba(59, 130, 246, 0.7);
   --accent-hover: rgba(37, 99, 235, 0.85);
   --success: #4ade80;
   --error: #f87171;
-  
-  /* Variables Glass/Neumorphism */
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
   --shadow-dark: rgba(0, 0, 0, 0.6);
   --shadow-light: rgba(255, 255, 255, 0.04);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: "Segoe UI", system-ui, sans-serif;
   background: var(--bg);
-  /* Liquid background effect: gradientes suaves simulando fluidos */
   background-image: 
     radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.12), transparent 25%),
     radial-gradient(circle at 85% 30%, rgba(74, 222, 128, 0.08), transparent 25%);
@@ -30,7 +30,6 @@ body {
   justify-content: center;
 }
 
-/* Glassmorphism + Liquid Glass Container */
 .container {
   background: var(--glass-bg);
   backdrop-filter: blur(24px) saturate(150%);
@@ -39,7 +38,6 @@ body {
   border-radius: 24px;
   width: min(90%, 520px);
   border: 1px solid var(--glass-border);
-  /* Sombras Neumórficas base + destello Liquid Glass */
   box-shadow: 
     16px 16px 32px var(--shadow-dark),
     -16px -16px 32px var(--shadow-light),
@@ -48,11 +46,13 @@ body {
   overflow: hidden;
 }
 
-/* Animación Liquid Glass (Destello) */
 .container::before {
   content: '';
   position: absolute;
-  top: 0; left: -100%; width: 50%; height: 100%;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
   background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06), transparent);
   transform: skewX(-25deg);
   animation: liquid-shine 7s infinite;
@@ -64,13 +64,31 @@ body {
   100% { left: 200%; }
 }
 
-h1 { font-size: 1.7rem; margin-bottom: .25rem; font-weight: 600; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); }
-.subtitle { color: #94a3b8; margin-bottom: 1.5rem; font-size: .95rem; }
+h1 {
+  font-size: 1.7rem;
+  margin-bottom: .25rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
 
-form { display: flex; flex-direction: column; gap: 1.25rem; }
-label { font-size: .9rem; color: #94a3b8; margin-bottom: -0.5rem; }
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+  font-size: .95rem;
+}
 
-/* Neumorphic Input */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+label {
+  font-size: .9rem;
+  color: #94a3b8;
+  margin-bottom: -0.5rem;
+}
+
 input {
   padding: 1rem;
   border: none;
@@ -79,7 +97,6 @@ input {
   color: var(--text);
   font-size: 1rem;
   outline: none;
-  /* Sombras interiores (Inset) simulando un hueco tallado */
   box-shadow: 
     inset 6px 6px 12px var(--shadow-dark), 
     inset -6px -6px 12px var(--shadow-light);
@@ -93,7 +110,6 @@ input:focus {
     0 0 0 2px rgba(59, 130, 246, 0.4);
 }
 
-/* Liquid Glass + Neumorphic Button */
 button {
   padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -104,7 +120,6 @@ button {
   font-weight: 600;
   cursor: pointer;
   backdrop-filter: blur(8px);
-  /* Sombras exteriores (Outset) + brillo interno tipo cristal */
   box-shadow: 
     6px 6px 14px rgba(0, 0, 0, 0.5),
     -4px -4px 10px rgba(255, 255, 255, 0.05),
@@ -123,13 +138,11 @@ button:hover {
 
 button:active {
   transform: translateY(1px);
-  /* Se invierte a Inset al presionar (Neumorphism activo) */
   box-shadow: 
     inset 4px 4px 10px rgba(0, 0, 0, 0.5),
     inset -4px -4px 10px rgba(255, 255, 255, 0.05);
 }
 
-/* Resultados y Errores (Cajas hundidas translúcidas) */
 .result, .error {
   margin-top: 1.5rem;
   padding: 1rem;
@@ -137,7 +150,6 @@ button:active {
   font-size: .95rem;
   word-break: break-all;
   backdrop-filter: blur(10px);
-  /* Hundimiento suave */
   box-shadow: inset 4px 4px 8px rgba(0,0,0,0.4);
 }
 
@@ -146,8 +158,16 @@ button:active {
   border: 1px solid rgba(74, 222, 128, 0.2);
 }
 
-.result a { color: var(--success); font-weight: 600; text-decoration: none; }
-.result a:hover { text-decoration: underline; text-shadow: 0 0 8px rgba(74, 222, 128, 0.4); }
+.result a {
+  color: var(--success);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.result a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+}
 
 .error {
   background: rgba(248, 113, 113, 0.1);
@@ -155,4 +175,6 @@ button:active {
   color: var(--error);
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none !important;
+}

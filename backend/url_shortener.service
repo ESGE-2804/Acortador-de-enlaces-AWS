@@ -1,0 +1,16 @@
+[Unit]
+Description=URL Shortener FastAPI
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/acortador-aws/backend
+Environment="PATH=/opt/acortador-aws/backend/venv/bin"
+Environment="AWS_REGION=us-east-1"
+Environment="TABLE_NAME=ShortenedURLs"
+Environment="BASE_URL=http://<IP_PUBLICA_EC2>"
+ExecStart=/opt/acortador-aws/backend/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

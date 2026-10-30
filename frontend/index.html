@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acortador de Enlaces</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>🔗 Acortador de Enlaces</h1>
+    <p class="subtitle">Pega tu URL y obtén un enlace corto al instante.</p>
+
+    <form id="shorten-form" autocomplete="off">
+      <label for="url-input">URL de origen:</label>
+      <input
+        id="url-input"
+        type="url"
+        placeholder="https://ejemplo.com/pagina-muy-larga"
+        required
+      />
+      <button type="submit">Acortar</button>
+    </form>
+
+    <div id="result" class="result hidden"></div>
+    <div id="error" class="error hidden"></div>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

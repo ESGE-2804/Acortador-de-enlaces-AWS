@@ -1,5 +1,3 @@
-"""Application configuration loaded from environment variables."""
-
 from __future__ import annotations
 
 import os
@@ -20,5 +18,16 @@ class Settings:
                                  if o.strip()]
     )
 
+
+settings = Settings()
+
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+    dynamo_table: str = "url-shortener-links"
+    region: str = "eu-west-1"
+
+    class Config:
+        env_prefix = "URL_SHORTENER_"   # lee URL_SHORTENER_DYNAMO_TABLE del env
 
 settings = Settings()
